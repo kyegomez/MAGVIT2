@@ -31,28 +31,9 @@ trainer = VideoTokenizerTrainer(
     batch_size=4,
     grad_accum_every=8,
     learning_rate=2e-5,
+    use_wandb_tracking=True,
     num_train_steps=1_000_000,
 )
 
-trainer.train()
-
-# after a lot of training ...
-# can use the EMA of the tokenizer
-
-ema_tokenizer = trainer.ema_tokenizer
-
-# mock video
-
-video = torch.randn(1, 3, 17, 128, 128)
-
-# tokenizing video to discrete codes
-
-codes = ema_tokenizer.tokenize(
-    video
-)  # (1, 9, 16, 16) <- in this example, time downsampled by 4x and space downsampled by 8x. flatten token ids for (non)-autoregressive training
-
-# sanity check
-
-decoded_video = ema_tokenizer.decode_from_code_indices(codes)
-
-assert torch.allclose(decoded_video, ema_tokenizer(video, return_recon=True))
+with trainer.trackers(project_name="magvit2", run_name="baseline"):
+    trainer.train()
