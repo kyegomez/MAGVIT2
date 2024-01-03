@@ -1,2 +1,1 @@
-from mag_vit.processors import * # noqa
-
+from mag_vit.processors import *  # noqa
