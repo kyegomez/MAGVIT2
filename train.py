@@ -1,4 +1,3 @@
-import torch
 from magvit2_pytorch import VideoTokenizer, VideoTokenizerTrainer
 
 tokenizer = VideoTokenizer(

@@ -3,7 +3,7 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "MAGVIT2"
+name = "magvit2"
 version = "0.0.1"
 description = "MAGVIT2 - Pytorch"
 license = "MIT"
@@ -27,6 +27,7 @@ einops = "*"
 zetascale = "*"
 magvit2-pytorch = "*"
 torch = "*"
+torchvision = "*"
 
 
 [tool.poetry.dev-dependencies]

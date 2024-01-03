@@ -2,3 +2,4 @@ magvit2-pytorch
 zetascale
 torch
 einops
+torchvision
